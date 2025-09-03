@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Insight Hub | Professional Legal Blog</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #c9ab81;
+            --accent: #8a1538;
+            --light: #f5f5f5;
+            --dark: #333;
+            --gray: #7a7a7a;
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: #0f2942;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background: var(--dark);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a3a5f"/><path d="M0 0L100 100" stroke="%23c9ab81" stroke-width="2"/><path d="M100 0L0 100" stroke="%23c9ab81" stroke-width="2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Cards with 3D Hover Effect */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img {
+            height: 200px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .card-date {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Section Specific Styles */
+        .featured-blogs .card-img {
+            background: var(--accent);
+        }
+
+        .vacancies .card-img {
+            background: #2c5f2d;
+        }
+
+        .law-notes .card-img {
+            background: #6a5acd;
+        }
+
+        .opportunities .card-img {
+            background: #cd5c5c;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .newsletter-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: #b89a70;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-btn {
+                border-radius: 4px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">SATTAWAN<span>LEGAL</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#blogs" class="nav-link">Blogs</a></li>
+                    <li class="nav-item"><a href="#vacancies" class="nav-link">Govt Vacancies</a></li>
+                    <li class="nav-item"><a href="#notes" class="nav-link">Law Notes</a></li>
+                    <li class="nav-item"><a href="#opportunities" class="nav-link">Opportunities</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Expert Legal Insights & Opportunities</h1>
+            <p>Your premier destination for legal knowledge, government vacancies, law notes, and career opportunities in the legal field.</p>
+            <a href="#blogs" class="btn">Explore Blogs</a>
+        </div>
+    </section>
+
+    <!-- Featured Blogs Section -->
+    <section id="blogs" class="section featured-blogs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Legal Blogs</h2>
+                <p>Insightful analysis of recent legal developments</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img">📝</div>
+                    <div class="card-content">
+                        <span class="card-date">September 15, 2025</span>
+                        <h3>Supreme Court Landmark Decision Analysis</h3>
+                        <p>Detailed breakdown of the recent landmark judgment and its implications for constitutional law.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">⚖️</div>
+                    <div class="card-content">
+                        <span class="card-date">September 10, 2025</span>
+                        <h3>Digital Evidence Admissibility in Court</h3>
+                        <p>Exploring the evolving standards for digital evidence in modern litigation procedures.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">🔍</div>
+                    <div class="card-content">
+                        <span class="card-date">September 5, 2025</span>
+                        <h3>Privacy Laws in the Age of Social Media</h3>
+                        <p>How recent legislation is adapting to protect individual privacy in the digital landscape.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Vacancies Section -->
+    <section id="vacancies" class="section vacancies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Legal Government Vacancies</h2>
+                <p>Latest opportunities in public sector legal positions</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img">🏛️</div>
+                    <div class="card-content">
+                        <span class="card-date">Deadline: October 10, 2025</span>
+                        <h3>Assistant Legal Advisor</h3>
+                        <p>Ministry of Law & Justice seeks experienced legal professionals for advisory role.</p>
+                        <a href="#" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">⚖️</div>
+                    <div class="card-content">
+                        <span class="card-date">Deadline: October 15, 2025</span>
+                        <h3>Public Prosecutor</h3>
+                        <p>District Court recruiting public prosecutors with minimum 5 years experience.</p>
+                        <a href="#" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">📑</div>
+                    <div class="card-content">
+                        <span class="card-date">Deadline: October 20, 2025</span>
+                        <h3>Legal Researcher</h3>
+                        <p>Supreme Court vacancy for legal researchers with expertise in constitutional law.</p>
+                        <a href="#" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Law Notes Section -->
+    <section id="notes" class="section law-notes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Law Notes & Resources</h2>
+                <p>Comprehensive legal reference materials</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img">📘</div>
+                    <div class="card-content">
+                        <h3>Constitutional Law Compendium</h3>
+                        <p>Detailed analysis of fundamental rights, judicial review, and constitutional amendments.</p>
+                        <a href="#" class="btn btn-outline">Download PDF</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">📗</div>
+                    <div class="card-content">
+                        <h3>Contract Law Essentials</h3>
+                        <p>Complete guide to formation, performance, and breach of contracts with case references.</p>
+                        <a href="#" class="btn btn-outline">Download PDF</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">📕</div>
+                    <div class="card-content">
+                        <h3>Criminal Procedure Code</h3>
+                        <p>Step-by-step explanation of criminal procedures from investigation to trial.</p>
+                        <a href="#" class="btn btn-outline">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Opportunities Section -->
+    <section id="opportunities" class="section opportunities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Other Opportunities</h2>
+                <p>Fellowships, internships, and legal competitions</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img">🌐</div>
+                    <div class="card-content">
+                        <span class="card-date">Deadline: September 30, 2025</span>
+                        <h3>Call for Paper </h3>
+                        <p>Call for Papers for MAgLaw Student Journal [ Volume IV, Issue(2025)]: Submit by Sept 30</p>
+                        <a href="maglaw.html" target="_blank" class="btn btn-outline">Apply Now</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">🏆</div>
+                    <div class="card-content">
+                        <span class="card-date">Deadline: November 15, 2025</span>
+                        <h3>National Moot Court Competition</h3>
+                        <p>Annual moot court competition open to all law schools across the country.</p>
+                        <a href="#" class="btn btn-outline">Register</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">⚖️</div>
+                    <div class="card-content">
+                        <span class="card-date">Deadline: December 1, 2025</span>
+                        <h3>Legal Internship Program</h3>
+                        <p>Summer internship with leading law firm for law students in their penultimate year.</p>
+                        <a href="#" class="btn btn-outline">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated with Legal Opportunities</h2>
+            <p>Subscribe to our newsletter to receive the latest legal vacancies, resources, and blog updates directly in your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Legal Insight Hub</h3>
+                    <p>Providing quality legal resources, insights, and opportunity updates for legal professionals and students.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="#vacancies">Govt Vacancies</a></li>
+                        <li><a href="#notes">Law Notes</a></li>
+                        <li><a href="#opportunities">Opportunities</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Case Summaries</a></li>
+                        <li><a href="#">Legislative Updates</a></li>
+                        <li><a href="#">Legal Templates</a></li>
+                        <li><a href="#">Research Papers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>Email: advocatedarshan@gmail.com</li>
+                        <li>Phone: +91 9310135883</li>
+                        <li>Address: vasant kunj office </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Legal Insight Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile navigation when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple form validation for newsletter
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                
+                if (emailInput.value && isValidEmail(emailInput.value)) {
+                    alert('Thank you for subscribing to our newsletter!');
+                    emailInput.value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        }
+
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Insight Hub | Admin Panel</title>
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #c9ab81;
+            --accent: #8a1538;
+            --light: #f5f5f5;
+            --dark: #333;
+            --gray: #7a7a7a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .admin-panel {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .sidebar a:hover, .sidebar a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #0f2942;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #b89a70;
+        }
+
+        .posts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px) rotateX(5deg) rotateY(-5deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-img {
+            height: 180px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .post-content {
+            padding: 20px;
+        }
+
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .post-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .post-date {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 768px) {
+            .admin-panel {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Legal<span>Insight</span> Admin</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="admin-panel">
+            <div class="sidebar">
+                <h2>Admin Panel</h2>
+                <ul>
+                    <li><a href="#" class="active">Add New Post</a></li>
+                    <li><a href="#">Manage Posts</a></li>
+                    <li><a href="#">View Statistics</a></li>
+                    <li><a href="#">Site Settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Add New Blog Post</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="alertBox" class="alert"></div>
+                        
+                        <form id="postForm">
+                            <div class="form-group">
+                                <label for="postTitle">Post Title</label>
+                                <input type="text" id="postTitle" class="form-control" placeholder="Enter post title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postCategory">Category</label>
+                                <select id="postCategory" class="form-control" required>
+                                    <option value="">Select a category</option>
+                                    <option value="Legal Analysis">Legal Analysis</option>
+                                    <option value="Case Study">Case Study</option>
+                                    <option value="Legislative Update">Legislative Update</option>
+                                    <option value="Career Advice">Career Advice</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postContent">Post Content</label>
+                                <textarea id="postContent" class="form-control" placeholder="Write your post content here..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postExcerpt">Excerpt (Short Summary)</label>
+                                <textarea id="postExcerpt" class="form-control" placeholder="Brief summary of your post" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postIcon">Post Icon (Emoji)</label>
+                                <input type="text" id="postIcon" class="form-control" value="📝" required>
+                            </div>
+                            
+                            <button type="submit" class="btn">Publish Post</button>
+                            <button type="reset" class="btn btn-secondary">Clear Form</button>
+                        </form>
+                    </div>
+                </div>
+
+                <h2>Recent Posts</h2>
+                <div class="posts-container" id="postsContainer">
+                    <!-- Posts will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load existing posts from localStorage
+            loadPosts();
+            
+            // Handle form submission
+            document.getElementById('postForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const title = document.getElementById('postTitle').value;
+                const category = document.getElementById('postCategory').value;
+                const content = document.getElementById('postContent').value;
+                const excerpt = document.getElementById('postExcerpt').value;
+                const icon = document.getElementById('postIcon').value;
+                
+                // Basic validation
+                if (!title || !category || !content || !excerpt) {
+                    showAlert('Please fill in all required fields', 'error');
+                    return;
+                }
+                
+                // Create post object
+                const post = {
+                    id: Date.now(), // Unique ID based on timestamp
+                    title,
+                    category,
+                    content,
+                    excerpt,
+                    icon,
+                    date: new Date().toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    })
+                };
+                
+                // Save post
+                savePost(post);
+                
+                // Add post to display
+                addPostToDisplay(post);
+                
+                // Show success message
+                showAlert('Post published successfully!', 'success');
+                
+                // Reset form
+                this.reset();
+                document.getElementById('postIcon').value = '📝';
+            });
+        });
+
+        function savePost(post) {
+            // Get existing posts from localStorage or initialize empty array
+            let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            
+            // Add new post to beginning of array
+            posts.unshift(post);
+            
+            // Save back to localStorage
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+        }
+
+        function loadPosts() {
+            // Get posts from localStorage
+            const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            
+            // Display each post
+            posts.forEach(post => {
+                addPostToDisplay(post);
+            });
+        }
+
+        function addPostToDisplay(post) {
+            const postsContainer = document.getElementById('postsContainer');
+            
+            // Create post element
+            const postElement = document.createElement('div');
+            postElement.className = 'post-card';
+            postElement.innerHTML = `
+                <div class="post-img">${post.icon}</div>
+                <div class="post-content">
+                    <h3 class="post-title">${post.title}</h3>
+                    <p class="post-excerpt">${post.excerpt}</p>
+                    <div class="post-date">${post.date} • ${post.category}</div>
+                    <div class="post-actions">
+                        <button class="btn" onclick="editPost(${post.id})">Edit</button>
+                        <button class="btn btn-secondary" onclick="deletePost(${post.id})">Delete</button>
+                    </div>
+                </div>
+            `;
+            
+            // Add to beginning of container
+            postsContainer.insertBefore(postElement, postsContainer.firstChild);
+        }
+
+        function showAlert(message, type) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type}`;
+            alertBox.style.display = 'block';
+            
+            // Hide alert after 3 seconds
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+
+        function deletePost(id) {
+            // Get posts from localStorage
+            let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            
+            // Filter out the post with the given ID
+            posts = posts.filter(post => post.id !== id);
+            
+            // Save back to localStorage
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+            
+            // Reload posts
+            document.getElementById('postsContainer').innerHTML = '';
+            loadPosts();
+            
+            // Show success message
+            showAlert('Post deleted successfully!', 'success');
+        }
+
+        function editPost(id) {
+            // Get posts from localStorage
+            const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            
+            // Find the post with the given ID
+            const post = posts.find(post => post.id === id);
+            
+            if (post) {
+                // Fill form with post data
+                document.getElementById('postTitle').value = post.title;
+                document.getElementById('postCategory').value = post.category;
+                document.getElementById('postContent').value = post.content;
+                document.getElementById('postExcerpt').value = post.excerpt;
+                document.getElementById('postIcon').value = post.icon;
+                
+                // Delete the old post
+                deletePost(id);
+                
+                // Scroll to form
+                document.getElementById('postTitle').scrollIntoView();
+            }
+        }
+    </script>
+</body>
+</html>
