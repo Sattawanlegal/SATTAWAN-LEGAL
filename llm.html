@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LLM Notes — SATTAWAN LEGAL</title>
+
+  <style>
+    /* Simple dark theme styling to match your site */
+    :root { --bg:#0f0f10; --card:#071035; --muted:#cfcfcf; --accent:#9ad1ff; --card-radius:12px; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:#e9eef6; }
+    .container { max-width:980px; margin:28px auto; padding:20px; }
+    h1 { font-size:36px; margin:0 0 16px; color:var(--accent); }
+    p.lead { color:var(--muted); margin:0 0 22px; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:18px; }
+    .card { background:var(--card); border-radius:var(--card-radius); padding:18px; box-shadow:0 6px 18px rgba(0,0,0,0.45); min-height:120px; display:flex; flex-direction:column; justify-content:space-between; }
+    .card h3 { margin:0 0 8px; font-size:18px; color:#fff; }
+    .card p { margin:0 0 12px; color:var(--muted); font-size:14px; }
+
+    .buttons { display:flex; gap:10px; }
+    .btn { text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600; font-size:13px; }
+    .btn-view { background:transparent; border:1px solid var(--accent); color:var(--accent); }
+    .btn-download { background:var(--accent); color:#071035; border:1px solid rgba(0,0,0,0.08); }
+
+    /* Viewer area */
+    #viewerWrap { margin-top:28px; background:#071022; padding:14px; border-radius:10px; display:none; }
+    #pdfViewer { width:100%; height:640px; border:0; border-radius:8px; background:#fff; }
+
+    /* small screens */
+    @media (max-width:460px) {
+      h1 { font-size:26px; }
+      .card { padding:14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>LLM Notes</h1>
+    <p class="lead">Click <strong>View</strong> to open a note in the page viewer or <strong>Download</strong> to save the PDF.</p>
+
+    <div class="grid">
+      <!-- Repeat one card per PDF; update href to match uploaded filenames -->
+      <div class="card">
+        <div>
+          <h3>Research Methods and Legal Writing — Unit I</h3>
+          <p>LLM subject — Research Methods and Legal Writing (Unit I)</p>
+        </div>
+        <div class="buttons">
+          <a class="btn btn-view" href="#" onclick="openViewer('pdfs/research-methods-legal-writing.pdf'); return false;">👁 View</a>
+          <a class="btn btn-download" href="pdfs/research-methods-legal-writing.pdf" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>System of Governance</h3>
+          <p>LLM subject — System of Governance</p>
+        </div>
+        <div class="buttons">
+          <a class="btn btn-view" href="#" onclick="openViewer('pdfs/system-of-governance.pdf'); return false;">👁 View</a>
+          <a class="btn btn-download" href="pdfs/system-of-governance.pdf" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Law and Justice in a Globalised World</h3>
+          <p>LLM subject — Law & Justice in a Globalised World</p>
+        </div>
+        <div class="buttons">
+          <a class="btn btn-view" href="#" onclick="openViewer('pdfs/law-and-justice-globalised-world.pdf'); return false;">👁 View</a>
+          <a class="btn btn-download" href="pdfs/law-and-justice-globalised-world.pdf" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Crime & Administration of Criminal Justice in India</h3>
+          <p>LLM subject — Crime and Administration of Criminal Justice in India</p>
+        </div>
+        <div class="buttons">
+          <a class="btn btn-view" href="#" onclick="openViewer('pdfs/crime-admin-criminal-justice-india.pdf'); return false;">👁 View</a>
+          <a class="btn btn-download" href="pdfs/crime-admin-criminal-justice-india.pdf" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Criminal Justice System, Law & Organised Crime</h3>
+          <p>LLM subject — Criminal justice system, law and organised crime</p>
+        </div>
+        <div class="buttons">
+          <a class="btn btn-view" href="#" onclick="openViewer('pdfs/criminal-justice-law-organised-crime.pdf'); return false;">👁 View</a>
+          <a class="btn btn-download" href="pdfs/criminal-justice-law-organised-crime.pdf" download>⬇ Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PDF viewer (hidden until a file is chosen) -->
+    <div id="viewerWrap">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <strong id="viewerTitle" style="color:#fff"></strong>
+        <div>
+          <a id="openInNew" class="btn btn-view" href="#" target="_blank">Open in new tab</a>
+          <a id="downloadCurrent" class="btn btn-download" href="#" download>⬇ Download</a>
+        </div>
+      </div>
+      <iframe id="pdfViewer" src=""></iframe>
+    </div>
+
+  </div>
+
+  <script>
+    // openViewer(url) — displays the chosen PDF inside the iframe viewer.
+    function openViewer(url) {
+      var viewerWrap = document.getElementById('viewerWrap');
+      var iframe = document.getElementById('pdfViewer');
+      var titleEl = document.getElementById('viewerTitle');
+      var openInNew = document.getElementById('openInNew');
+      var downloadCurrent = document.getElementById('downloadCurrent');
+
+      // derive a title from filename (nice fallback)
+      var parts = url.split('/');
+      var filename = parts[parts.length-1];
+      titleEl.textContent = filename.replace(/[-_]/g, ' ').replace('.pdf','');
+
+      // set iframe src (will open in browser)
+      iframe.src = url;
+      openInNew.href = url;
+      downloadCurrent.href = url;
+
+      viewerWrap.style.display = 'block';
+      // scroll to viewer
+      viewerWrap.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
